@@ -1,0 +1,10 @@
+cautious,aux_2e,aux_dil2,fusion24,twin_plain,twin_tvA,twin_tvB,twin_aug_2dboost,twin_aug_catbal
+cautious,aux_2e,aux_dil2,fusion24,twin_plain,twin_tvA,twin_tvB,twin_aug_2dboost,twin_aug_catbal,t2mix
+cautious,aux_2e,aux_dil2,fusion24,twin_plain,twin_tvA,twin_tvB,twin_aug_2dboost,twin_aug_catbal,vanilla_fg33_cp
+cautious,aux_2e,aux_dil2,fusion24,twin_plain,twin_tvA,twin_tvB,twin_aug_2dboost,twin_aug_catbal,twin_boost_multi
+cautious,aux_2e,aux_dil2,fusion24,twin_plain,twin_tvA,twin_tvB,twin_aug_2dboost,twin_aug_catbal,t2mix,vanilla_fg33_cp,twin_boost_multi
+cautious,aux_2e,aux_dil2,fusion24,twin_plain,twin_tvA,twin_tvB,twin_aug_2dboost,twin_aug_catbal,t2mix,vanilla_fg33_cp,twin_boost_multi,vanilla_fg33_aug,twin_long,pseudomix_ft
+cautious,aux_2e,aux_dil2,fusion24,textaug,twin_plain,twin_tvA,twin_tvB,twin_aug_2dboost,twin_aug_catbal,t2mix,vanilla_fg33_cp,twin_boost_multi,twin_boost20,vanilla_fg33_aug,twin_long,pseudomix_ft
+twin_plain,twin_tvA,twin_tvB,twin_aug_2dboost,twin_aug_catbal,t2mix,vanilla_fg33_cp,twin_boost_multi
+cautious,aux_2e,aux_dil2,fusion24,t2mix,vanilla_fg33_cp,twin_boost_multi,twin_aug_2dboost
+cautious,aux_2e,aux_dil2,fusion24,twin_plain,twin_tvA,twin_tvB,twin_aug_2dboost,twin_aug_catbal,twin_long

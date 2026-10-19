@@ -1,0 +1,31 @@
+TAGS (fomo.fo): ReXGroundingCT MICCAI 2026 challenge, Track 1 (rank 3)
+Copyright 2026 fomo.fo lab
+
+This repository contains code from or based on the following projects.
+
+VoxTell (https://github.com/MIC-DKFZ/VoxTell), Apache License 2.0,
+Copyright German Cancer Research Center (DKFZ), Division of Medical Image Computing.
+  stage0/voxtell_training/* are modified copies of files in voxtell/training/ (changes noted in each file).
+  The VoxTell model itself is used as an installed package (requirements.txt).
+
+nnU-Net (https://github.com/MIC-DKFZ/nnUNet), Apache License 2.0,
+Copyright German Cancer Research Center (DKFZ), Division of Medical Image Computing.
+  stage0/nnunetv2_variant/voxtell_link.py is added to an nnU-Net installation.
+
+TAP-CT fine-tuning code (tapct/primus/) and the TAP-CT loader (tapct/lattice/models.py, from his `lattice` package)
+were written by Kevin Groot Lipman (Netherlands Cancer Institute).
+  tapct/primus/model.py ports decoder logic from dynamic_network_architectures (Apache License 2.0).
+  The TAP-CT encoder weights (https://huggingface.co/fomofo/tap-ct-b-3d) are licensed CC BY-NC 4.0.
+
+Models used, not distributed here:
+  VoxTell v1.1 weights: CC BY-NC-SA 4.0.
+  Qwen3-Embedding-4B, Qwen3-Embedding-0.6B, Qwen3-32B-FP8, Qwen2.5-7B-Instruct: Apache License 2.0.
+  TotalSegmentator: Apache License 2.0.
+
+Data used, not distributed here:
+  ReXGroundingCT (https://huggingface.co/datasets/rajpurkarlab/ReXGroundingCT): CC BY-NC-SA 4.0.
+  CT-RATE (https://huggingface.co/datasets/ibrahimhamamci/CT-RATE): CC BY-NC-SA 4.0.
+  stage0/data/*.json are class and case weights computed from the ReXGroundingCT training labels.
+  llm_mapping/totalseg_label_map.json is the TotalSegmentator 'total' label list.
+  tags/rexg_ts/*.jsonl contain ReXGroundingCT finding sentences with Qwen3-32B lobe labels:
+  CC BY-NC-SA 4.0, not covered by the Apache-2.0 licence of the code.

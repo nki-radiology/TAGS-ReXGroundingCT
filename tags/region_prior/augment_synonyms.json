@@ -1,0 +1,56 @@
+{
+  "_meta": {
+    "purpose": "IN-DISTRIBUTION synonym groups for text augmentation of ReXGroundingCT findings. Every variant is attested in the 8068 GT finding texts (count given). Goal is robustness on THIS data's own phrasing variation - no out-of-distribution vocabulary is introduced.",
+    "rules": [
+      "Swap only within a group, sampling variants roughly proportional to attested frequency (or uniform at low prob).",
+      "caution:true groups are near-synonyms - use swap probability <= 0.2.",
+      "NEVER swap: temporal words (new/stable/increased/sequelae), certainty tiers (consistent-with vs suggestive-of), grade tiers (minimal vs moderate), named patterns (tree-in-bud, crazy paving, mosaic, halo, air bronchogram, reticulonodular), exact counts and measurements."
+    ]
+  },
+  "orthographic": {
+    "ground_glass":  {"swap": {"ground-glass": 882, "ground glass": 757}},
+    "nonspecific":   {"swap": {"nonspecific": 721, "non-specific": 65}},
+    "bandlike":      {"swap": {"band-like": 47, "bandlike": 3}}
+  },
+  "lesion_terms": {
+    "atelectasis":   {"swap": {"atelectasis": 699, "atelectatic changes": 170}},
+    "emphysema":     {"swap": {"emphysematous changes": 345, "emphysema": 65}},
+    "calcified":     {"swap": {"calcified": 154, "calcific": 74}},
+    "scarring":      {"swap": {"scarring": 378, "fibrotic changes": 137, "fibrotic scarring": 14}, "caution": true},
+    "opacity":       {"swap": {"opacity": 257, "density": 418}, "plural": {"opacities": 1143, "densities": 255}, "caution": true},
+    "nodule_qual":   {"swap": {"pulmonary nodule": 184, "parenchymal nodule": 190, "nodular lesion": 33}, "caution": true, "note": "only swap when the noun already carries a qualifier; bare 'nodule' stays bare"},
+    "indeterminate": {"swap": {"nonspecific": 721, "indeterminate": 139}, "caution": true}
+  },
+  "descriptors": {
+    "focal":    {"swap": {"focal": 186, "localized": 29}},
+    "diffuse":  {"swap": {"diffuse": 185, "widespread": 58}, "caution": true},
+    "few":      {"swap": {"a few": 111, "several": 174}, "caution": true},
+    "multiple": {"swap": {"multiple": 149, "scattered": 58, "numerous": 9}, "caution": true},
+    "grade_low":{"swap": {"minimal": 521, "mild": 234}, "caution": true, "note": "same low tier only; never to moderate/severe"}
+  },
+  "measurement_templates": {
+    "swap_templates": {"measuring {X} mm": 519, "{X} mm in diameter": 157, "{X} mm in size": 28},
+    "note": "number and unit stay exact"
+  },
+  "phrasing": {
+    "presence": {"swap": {"observed": 28, "present": 26, "noted": 13, "seen": 6}},
+    "certainty_high": {"swap": {"consistent with": 189, "compatible with": 7}},
+    "preposition": {"swap": {"in the": 5104, "within the": 72}, "caution": true},
+    "located": {"swap_templates": {"{lesion} in the {loc}": null, "{lesion} located in the {loc}": 24}}
+  },
+  "locations": {
+    "note": "attested paraphrase pairs from lung_synonyms.json attested fields (use these; IGNORE that file's 'augment' arrays - they contain out-of-distribution vocabulary)",
+    "rll": {"swap": {"right lower lobe": 528, "lower lobe of the right lung": 200}},
+    "lll": {"swap": {"left lower lobe": 475, "lower lobe of the left lung": 181}},
+    "rul": {"swap": {"right upper lobe": 334, "upper lobe of the right lung": 130}},
+    "lul": {"swap": {"left upper lobe": 450, "upper lobe of the left lung": 85}},
+    "rml": {"swap": {"right middle lobe": 413, "middle lobe of the right lung": 230}},
+    "lingula": {"swap": {"lingula": 114, "lingular segment": 407}, "caution": true},
+    "bilateral": {"swap": {"both lungs": 2637, "bilateral lungs": 12, "both lung parenchyma": 40}, "note": "'bilateral(ly)' as adjective 509 - reposition allowed"},
+    "posterobasal": {"swap": {"posterobasal": 442, "posterior basal": 10}},
+    "laterobasal": {"swap": {"laterobasal": 180, "lateral basal": 37}},
+    "mediobasal": {"swap": {"mediobasal": 90, "medial basal": 13}},
+    "subpleural": {"swap": {"subpleural": 638}, "note": "'pleural-based' (25 in train) removed as swap target: 0 occurrences in the actual test texts", "caution": true},
+    "peripheral": {"swap": {"peripheral": 524, "peripherally located": 12}, "caution": true}
+  }
+}

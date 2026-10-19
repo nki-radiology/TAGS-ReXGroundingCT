@@ -1,0 +1,21 @@
+# Python 3.11. Versions used for the submission (training, inference, post-processing).
+torch==2.8.0
+numpy==2.4.6
+scipy==1.17.1
+nibabel==5.4.2
+scikit-learn==1.9.0      # threshold model (pickled with 1.9.0)
+scikit-image==0.26.0
+einops==0.8.2
+pandas==3.0.4
+transformers==4.57.6     # Qwen3-Embedding-4B text encoder
+huggingface_hub==0.36.2
+safetensors==0.8.0
+simpleitk==2.5.5
+nnunetv2==2.8.0
+dynamic_network_architectures==0.4.4
+acvl_utils==0.2.6
+batchgenerators==0.25.3
+batchgeneratorsv2==0.3.3
+voxtell @ git+https://github.com/MIC-DKFZ/VoxTell.git@ec517b79a19aa59b25789c878d808790326e9651
+# TAP-CT (tapct/) additionally used timm==1.0.24.
+# LLM steps (llm_mapping/) ran in a separate environment: vllm==0.17.1 (torch 2.10.0), openpyxl==3.1.5.
