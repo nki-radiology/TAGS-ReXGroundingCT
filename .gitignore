@@ -1,6 +1,6 @@
-data/
-weights/
-tapct_maps/
+/data/
+/weights/
+/tapct_maps/
 __pycache__/
 *.pyc
 tags/index/
