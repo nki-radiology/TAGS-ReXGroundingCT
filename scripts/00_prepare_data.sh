@@ -4,7 +4,7 @@
 set -euo pipefail
 cd tags
 python build_t1_index.py            # index/t1_index_{train,val}.jsonl  (one row per finding)
-python build_indices.py             # index/t1_index_all.jsonl, index/t1_all_valx5.jsonl
+python build_indices.py             # index/t1_index_all.jsonl (train + validation)
 python build_text_bank.py           # weights/voxtell_text_bank  (Qwen3-Embedding-4B, train+val sentences)
 python prep_test_texts.py           # test_bank/                 (same encoder, test sentences)
 python augment_texts.py             # region_prior/augment_variants.json  (text augmentation, from augment_synonyms.json)
@@ -17,12 +17,11 @@ python build_lobe_bank.py           # lobe_bank/                 (lobe-aux membe
 # python ../llm_mapping/map_categories_llm.py --input-jsonl rexg_ts/rexg_findings.jsonl \
 #     --output rexg_ts/rexg_ts_labels.jsonl --batch-size 256 --enforce-eager
 
-# CT-RATE auxiliary pool (members aux2e and auxdil2 only): split CT-RATE reports into findings with
-# Qwen3-32B, pair nodule/effusion findings with TotalSegmentator masks, keep 8,000 evenly spaced rows.
-# NOTE: as submitted, this pool excluded validation patients but NOT test patients (80 of the 300 test
-# studies were in it). build_clean_aux.py builds the pool without any challenge test/val patient.
+# CT-RATE auxiliary pool (members aux_effusion and aux_nodule_effusion): split the CT-RATE reports into findings with
+# Qwen3-32B, pair nodule/effusion findings with TotalSegmentator masks, keep 8,000 evenly spaced rows, then replace
+# rows of challenge test/validation patients by other CT-RATE findings (the pool used for the submission had not
+# excluded test patients; see README).
 python ../llm_mapping/map_categories_llm.py --dataset ctrate --batch-size 256 --enforce-eager
 python build_aux_index.py --out index/aux_ctrate_full.jsonl --limit 0
-python prep_aux_texts.py --index index/aux_ctrate_full.jsonl --cap 8000     # aux_bank/index_pilot.jsonl + texts/embeddings
-python build_indices.py --aux                                               # aux_bank/index_2e_only.jsonl
-# python build_clean_aux.py   # recommended instead of the two lines above: aux_bank_clean/ without test/val patients
+python prep_aux_texts.py --index index/aux_ctrate_full.jsonl --cap 8000     # aux_bank/
+python build_clean_aux.py                                                   # aux_bank_clean/ (used for training)
